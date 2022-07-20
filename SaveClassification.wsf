@@ -1,0 +1,9 @@
+<job>
+	<script language="VBScript" src="SDK.vbs"></script>
+	<script language="VBScript" src="takescreen.vbs"></script>
+	<script language="VBScript" src="savescreen.vbs">
+
+
+
+	</script>
+</job>
