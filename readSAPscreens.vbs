@@ -33,9 +33,9 @@ Sub ProcessArticle(article, session)
     
     '<GuiTextField Id="/app/con[1]/ses[0]/wnd[1]/usr/tblSAPLMGMMTC_VIEW/txtMSICHTAUSW-DYTXT[0,2]" Name="MSICHTAUSW-DYTXT" Text="Classification"/>
     If session.findById("wnd[1]/usr/tblSAPLMGMMTC_VIEW/txtMSICHTAUSW-DYTXT[0,2]", False).Text = "Classification" Then
-        session.findById("wnd[1]/tbar[0]/btn[0]").press                                            'OK
+        'session.findById("wnd[1]/tbar[0]/btn[0]").press                                            'OK
         
-        session.findById("wnd[0]/usr/btn%#AUTOTEXT004").press                                    'кнопка выбора класса
+        'session.findById("wnd[0]/usr/btn%#AUTOTEXT004").press                                    'кнопка выбора класса
         
         'поиск нужного класса в таблице классов
         Set elem = Nothing
@@ -45,7 +45,7 @@ Sub ProcessArticle(article, session)
         Dim arrElement(200,10)
         For i = 1 To winCount
             winElement = session.findById("wnd[1]/usr").Children(i - 1).Text
-            If winElement = "001" Then
+            If winElement = "Z01" Then
                 Set elem = session.findById("wnd[1]/usr").Children(i - 1)
                 Exit For
             End If
