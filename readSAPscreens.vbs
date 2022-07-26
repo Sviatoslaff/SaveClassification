@@ -34,8 +34,10 @@ Sub ProcessArticle(article, session)
     '<GuiTextField Id="/app/con[1]/ses[0]/wnd[1]/usr/tblSAPLMGMMTC_VIEW/txtMSICHTAUSW-DYTXT[0,2]" Name="MSICHTAUSW-DYTXT" Text="Classification"/>
     If session.findById("wnd[1]/usr/tblSAPLMGMMTC_VIEW/txtMSICHTAUSW-DYTXT[0,2]", False).Text = "Classification" Then
         session.findById("wnd[1]/tbar[0]/btn[0]").press                                             'OK
-        
-        'session.findById("wnd[0]/usr/btn%#AUTOTEXT004").press                                      'кнопка выбора класса
+
+        If Not session.findById("wnd[0]/usr/btn%#AUTOTEXT004", False) Is Nothing Then
+            session.findById("wnd[0]/usr/btn%#AUTOTEXT004").press                                    'кнопка выбора класса -- комментировать!!
+        End If
         
         'поиск нужного класса в таблице классов
         Set elem = Nothing
@@ -45,8 +47,9 @@ Sub ProcessArticle(article, session)
         Dim arrElement(200,10)
         For i = 1 To winCount
             winElement = session.findById("wnd[1]/usr").Children(i - 1).Text
-            If winElement = "Z01" Then
+            If winElement = "Z03" Then
                 Set elem = session.findById("wnd[1]/usr").Children(i - 1)
+                MsgBox elem.Text                                                                    'закомментировать
                 Exit For
             End If
         Next
@@ -91,12 +94,13 @@ Sub ProcessArticle(article, session)
                 myArr(i - 6, 1) = txtElem
             Next
             'запись значений в БД
-            ClassCode = "Z01"
+            ClassCode = "Z03"
             ClassName = "Classification"            
         Else
-            ClassCode = "NtF"
-            ClassName = "Class Z01 Not Found"
+            ClassCode = "Ntf"
+            ClassName = "Class Z03 Not Found"
 			session.findById("wnd[1]/tbar[0]/btn[12]").press
+            pressF3()
         End If
 
     Else
@@ -106,7 +110,7 @@ Sub ProcessArticle(article, session)
     End If
 	MaxX = MaxX - 6
     Call InsertArticle(article, Art_Name, BD1_Text, ClassCode, ClassName, myArr, MaxX )
-    pressF3()
+
 End Sub
 
 'To avoid using error handling you can use:
