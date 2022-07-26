@@ -25,17 +25,17 @@ Sub ProcessArticle(article, session)
     pressF3()
     
     'Choose Classification
-    session.findById("wnd[0]/tbar[1]/btn[5]").press
+    session.findById("wnd[0]/tbar[1]/btn[5]").press                                                 'кнопка Select Views
     session.findById("wnd[1]/usr/tblSAPLMGMMTC_VIEW").getAbsoluteRow(0).selected = False
-    session.findById("wnd[1]/usr/tblSAPLMGMMTC_VIEW").getAbsoluteRow(2).selected = False
+    session.findById("wnd[1]/usr/tblSAPLMGMMTC_VIEW").getAbsoluteRow(1).selected = False
     session.findById("wnd[1]/usr/tblSAPLMGMMTC_VIEW").getAbsoluteRow(3).selected = False
     session.findById("wnd[1]/usr/tblSAPLMGMMTC_VIEW").getAbsoluteRow(2).selected = True
     
     '<GuiTextField Id="/app/con[1]/ses[0]/wnd[1]/usr/tblSAPLMGMMTC_VIEW/txtMSICHTAUSW-DYTXT[0,2]" Name="MSICHTAUSW-DYTXT" Text="Classification"/>
     If session.findById("wnd[1]/usr/tblSAPLMGMMTC_VIEW/txtMSICHTAUSW-DYTXT[0,2]", False).Text = "Classification" Then
-        'session.findById("wnd[1]/tbar[0]/btn[0]").press                                            'OK
+        session.findById("wnd[1]/tbar[0]/btn[0]").press                                             'OK
         
-        'session.findById("wnd[0]/usr/btn%#AUTOTEXT004").press                                    'кнопка выбора класса
+        'session.findById("wnd[0]/usr/btn%#AUTOTEXT004").press                                      'кнопка выбора класса
         
         'поиск нужного класса в таблице классов
         Set elem = Nothing
