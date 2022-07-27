@@ -75,7 +75,12 @@ Sub ProcessArticle(article, session)
                     Else
                         y = 0
                     End If
-                    arrElement(x,y) = txtElem
+                    if y = 0 AND CInt(arrElem(0)) <> 0              
+                        arrElement(x,0) = ""                    'Для случаев, когда значения указаны
+                        arrElement(x,1) = txtElem               ' без характеристики
+                    else
+                        arrElement(x,y) = txtElem
+                    end if
                     maxX = x
                 End If
             Next
