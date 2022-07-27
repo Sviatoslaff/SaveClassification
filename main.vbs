@@ -17,5 +17,6 @@ Loop
 
 objWorkbook.Close False
 ArticlesExcel.Quit
+pressF3()
 
 MsgBox "Script finished!", vbSystemModal Or vbInformation

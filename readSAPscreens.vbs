@@ -49,7 +49,7 @@ Sub ProcessArticle(article, session)
             winElement = session.findById("wnd[1]/usr").Children(i - 1).Text
             If winElement = "Z03" Then
                 Set elem = session.findById("wnd[1]/usr").Children(i - 1)
-                MsgBox elem.Text                                                                    'закомментировать
+                'MsgBox elem.Text                                                                    'закомментировать
                 Exit For
             End If
         Next
@@ -100,9 +100,8 @@ Sub ProcessArticle(article, session)
             ClassCode = "Ntf"
             ClassName = "Class Z03 Not Found"
 			session.findById("wnd[1]/tbar[0]/btn[12]").press
-            pressF3()
         End If
-
+        pressF3()
     Else
         ClassCode = "NoC"
         ClassName = "The Article has no Classification"
