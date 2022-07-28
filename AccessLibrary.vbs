@@ -14,7 +14,7 @@ Sub InsertArticle(article, Art_Name, BD1_Text, ClassCode, ClassName, myArr, MaxX
      & "', '" & ClassName _
      & "')")
 
-    For i = 0 To MaxX
+    For i = 0 To MaxX-1
         'if myArr(i,0) = "" Then Exit For
         Set rs = Conn.Execute(" INSERT INTO Chars " _
         & "VALUES ('" & article _

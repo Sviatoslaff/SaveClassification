@@ -75,7 +75,7 @@ Sub ProcessArticle(article, session)
                     Else
                         y = 0
                     End If
-                    if y = 0 AND CInt(arrElem(0)) <> 0              
+                    if y = 0 AND CInt(arrElem(0)) <> 1 then        
                         arrElement(x,0) = ""                    'Для случаев, когда значения указаны
                         arrElement(x,1) = txtElem               ' без характеристики
                     else
