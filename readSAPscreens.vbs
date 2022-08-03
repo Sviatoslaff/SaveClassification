@@ -7,11 +7,15 @@ Sub ProcessArticle(article, session)
     session.findById("wnd[0]/tbar[1]/btn[5]").press
 
     'Choose Basic Data 1
-    session.findById("wnd[1]/usr/tblSAPLMGMMTC_VIEW").getAbsoluteRow(0).selected = True
-
-	If Err.Number <> 0 Then										'Если вкладкм нет, то ошибка
+    ' session.findById("wnd[1]/usr/tblSAPLMGMMTC_VIEW").getAbsoluteRow(0).selected = True
+	'If Err.Number <> 0 Then										'Если вкладкм нет, то ошибка
+	'	Exit Sub												'Выходим из процелуры 
+	'End If		
+    If session.findById("wnd[1]/usr/tblSAPLMGMMTC_VIEW", False) Is Nothing Then
 		Exit Sub												'Выходим из процелуры 
-	End If		
+    End If
+
+
 
     session.findById("wnd[1]/tbar[0]/btn[0]").press
     
