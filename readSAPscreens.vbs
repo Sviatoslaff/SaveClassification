@@ -11,11 +11,10 @@ Sub ProcessArticle(article, session)
 	'If Err.Number <> 0 Then										'Если вкладкм нет, то ошибка
 	'	Exit Sub												'Выходим из процелуры 
 	'End If		
+    WScript.Sleep 400
     If session.findById("wnd[1]/usr/tblSAPLMGMMTC_VIEW", False) Is Nothing Then
 		Exit Sub												'Выходим из процелуры 
     End If
-
-
 
     session.findById("wnd[1]/tbar[0]/btn[0]").press
     
