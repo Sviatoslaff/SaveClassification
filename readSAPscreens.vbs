@@ -38,10 +38,12 @@ Sub ProcessArticle(article, session)
     If session.findById("wnd[1]/usr/tblSAPLMGMMTC_VIEW/txtMSICHTAUSW-DYTXT[0,2]", False).Text = "Classification" Then
         session.findById("wnd[1]/tbar[0]/btn[0]").press                                             'OK
 
+        WScript.Sleep 400
         If Not session.findById("wnd[0]/usr/btn%#AUTOTEXT004", False) Is Nothing Then
             session.findById("wnd[0]/usr/btn%#AUTOTEXT004").press                                    'кнопка выбора класса -- комментировать!!
         End If
         
+        WScript.Sleep 400
         'поиск нужного класса в таблице классов
         Set elem = Nothing
         winCount = session.findById("wnd[1]/usr").Children.Count
@@ -58,7 +60,9 @@ Sub ProcessArticle(article, session)
         Next
         If Not elem Is Nothing Then
             elem.setFocus
+            WScript.Sleep 100
             session.findById("wnd[1]/tbar[0]/btn[0]").press
+            WScript.Sleep 300
             session.findById("wnd[0]/usr/subSUBSCR_BEWERT:SAPLCTMS:5000/tabsTABSTRIP_CHAR/tabpTAB1/ssubTABSTRIP_CHAR_GR:SAPLCTMS:5100/btnRCTMS-LISTE").press
             'обработка окна со списком классификации, получение массива с индексами значений
             iCount = session.findById("wnd[1]/usr").Children.Count
