@@ -62,7 +62,7 @@ Sub ProcessArticle(article, session)
             Dim arrElement(200,10)
             For i = 1 To winCount
                 winElement = session.findById("wnd[1]/usr").Children(i - 1).Text
-                If winElement = "Z01" Then
+                If winElement = "Z03" Then
                     Set elem = session.findById("wnd[1]/usr").Children(i - 1)
                     'MsgBox elem.Text                                                                    'закомментировать
                     Exit For
