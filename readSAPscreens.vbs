@@ -39,7 +39,11 @@ Sub ProcessArticle(article, session)
     
     'MsgBox session.findById("wnd[1]/usr/tblSAPLMGMMTC_VIEW/txtMSICHTAUSW-DYTXT[0,2]", False).Text
     '<GuiTextField Id="/app/con[1]/ses[0]/wnd[1]/usr/tblSAPLMGMMTC_VIEW/txtMSICHTAUSW-DYTXT[0,2]" Name="MSICHTAUSW-DYTXT" Text="Classification"/>
-    If session.findById("wnd[1]/usr/tblSAPLMGMMTC_VIEW/txtMSICHTAUSW-DYTXT[0,2]", False).Text = "Classification" Then
+    If session.findById("wnd[1]/usr/tblSAPLMGMMTC_VIEW/txtMSICHTAUSW-DYTXT[0,2]", False) Is Nothing Then
+        ClassCode = "NoC"
+        ClassName = "The Article has no Classification"
+        session.findById("wnd[1]/tbar[0]/btn[12]").press                    'выход из окна с ракурсами
+    ElseIf session.findById("wnd[1]/usr/tblSAPLMGMMTC_VIEW/txtMSICHTAUSW-DYTXT[0,2]", False).Text = "Classification" Then
         session.findById("wnd[1]/tbar[0]/btn[0]").press                                             'OK
         
         WScript.Sleep 400
@@ -52,7 +56,7 @@ Sub ProcessArticle(article, session)
             session.findById("wnd[1]/tbar[0]/btn[12]").press                                        'выход из окна с классами
             ClassCode = "NtA"
             ClassName = "Z03 Classification has no any assignments"
-        Else         
+        Else
             WScript.Sleep 400
             'поиск нужного класса в таблице классов
             Set elem = Nothing
