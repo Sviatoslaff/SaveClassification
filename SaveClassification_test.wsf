@@ -1,0 +1,6 @@
+<job>
+
+<script language="VBScript" src="AccessLibrary.vbs"></script>
+<script language="VBScript" src="test.vbs"></script>
+
+</job>
