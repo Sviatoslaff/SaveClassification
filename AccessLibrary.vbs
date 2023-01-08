@@ -2,8 +2,8 @@ Sub InsertArticle (article, Art_Name, BD1_Text, ClassCode, ClassName, myArr, Max
 
     Dim Conn, rs, S
     Set Conn = CreateObject("ADODB.Connection")
-    Conn.Open "Driver={Microsoft Access Driver (*.mdb, *.accdb)};" & _
-    "Dbq=C:\Projects\SULZER03\MATERIALS.accdb"
+    Conn.Open "PROVIDER=Microsoft.ACE.OLEDB.12.0;" & _
+    "DATA SOURCE=C:\Projects\SULZER03\MATERIALS.accdb"
     Set rs = CreateObject("ADODB.Recordset")
 
 
