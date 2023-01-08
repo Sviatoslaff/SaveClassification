@@ -6,4 +6,4 @@ ClassName= "TEST"
 Dim myArr(100,1)
 MaxX = 0
 
-Call InsertArticle (article, Art_Name, BD1_Text, ClassCode, ClassName, myArr, MaxX )
+Call SaveArticle (article, Art_Name, BD1_Text, ClassCode, ClassName, myArr, MaxX)

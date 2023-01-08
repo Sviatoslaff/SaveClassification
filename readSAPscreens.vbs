@@ -135,7 +135,8 @@ Sub ProcessArticle(article, session)
         session.findById("wnd[1]/tbar[0]/btn[12]").press                    'выход из окна с ракурсами
     End If
     MaxX = MaxX - 6
-    Call InsertArticle(article, Art_Name, BD1_Text, ClassCode, ClassName, myArr, MaxX )
+    'Call InsertArticle(article, Art_Name, BD1_Text, ClassCode, ClassName, myArr, MaxX )
+    Call SaveArticle(article, Art_Name, BD1_Text, ClassCode, ClassName, myArr, MaxX )
     
 End Sub
 

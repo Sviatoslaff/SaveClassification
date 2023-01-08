@@ -2,8 +2,8 @@ Sub InsertArticle (article, Art_Name, BD1_Text, ClassCode, ClassName, myArr, Max
 
     Dim Conn, rs, S
     Set Conn = CreateObject("ADODB.Connection")
-    Conn.Open "PROVIDER=Microsoft.ACE.OLEDB.11.0;" & _
-    "DATA SOURCE=C:\Projects\SULZER03\MATERIALS.accdb"
+    Conn.Open "Driver={Microsoft Access Driver (*.mdb, *.accdb)};" & _
+    "Dbq=C:\Projects\SULZER03\MATERIALS.accdb"
     Set rs = CreateObject("ADODB.Recordset")
 
 
@@ -38,6 +38,38 @@ Sub InsertArticle (article, Art_Name, BD1_Text, ClassCode, ClassName, myArr, Max
     If Conn.State = adStateOpen Then
         Conn.Close
     End If
+Exit Sub
+
+End Sub
+
+
+
+Sub SaveArticle (article, Art_Name, BD1_Text, ClassCode, ClassName, myArr, MaxX)
+
+    'Set dbs = OpenDatabase("C:\Projects\SULZER031\MATERIALS.accdb")
+    'Set rs = dbs.OpenRecordset("Materials")
+
+    Dim AccApp
+    Set AccApp = CreateObject("Access.Application")
+    AccApp.OpenCurrentDatabase "C:\Projects\SULZER031\MATERIALS.accdb"
+    AccApp.DoCMD.RunSQL("INSERT INTO Materials " _
+    & "VALUES ('" & article _
+    & "', '" & Art_Name _
+    & "', '" & BD1_Text _
+    & "', '" & ClassCode _
+    & "', '" & ClassName _
+    & "', '1"  _
+    & "')")
+
+    For i = 0 To MaxX-1
+        'if myArr(i,0) = "" Then Exit For
+        AccApp.DoCMD.RunSQL("INSERT INTO Chars " _
+        & "VALUES ('" & article _
+        & "', '" & myArr(i, 0) _
+        & "', '" & myArr(i, 1) _
+        & "')")
+    Next    
+
 Exit Sub
 
 
