@@ -62,8 +62,6 @@ Sub SaveArticle (article, Art_Name, BD1_Text, ClassCode, ClassName, myArr, MaxX)
     Art_Name = conv_spec_symbols(Art_Name)
     BD1_Text = conv_spec_symbols(BD1_Text)
 
-    MsgBox (Art_Name)
-
     AccApp.DoCMD.RunSQL("INSERT INTO Materials " _
     & "VALUES ('" & article _
     & "', '" & Art_Name _
@@ -99,6 +97,7 @@ Exit Sub
 End Sub
 
 Function conv_spec_symbols ( s )
-    conv_spec_symbols = Replace(s, Chr(34), "\""")
-    conv_spec_symbols = Replace(s, "'", "\'")
+    'r = Replace(s, Chr(34), "\""")
+    conv_spec_symbols = Replace(s, "'", "`")
+
 End Function
