@@ -59,6 +59,8 @@ Sub SaveArticle (article, Art_Name, BD1_Text, ClassCode, ClassName, myArr, MaxX)
         Err.Clear
     End If
 
+    Art_Name = conv_spec_symbols(Art_Name)
+    BD1_Text = conv_spec_symbols(BD1_Text)
     AccApp.DoCMD.RunSQL("INSERT INTO Materials " _
     & "VALUES ('" & article _
     & "', '" & Art_Name _
@@ -91,6 +93,12 @@ Sub SaveArticle (article, Art_Name, BD1_Text, ClassCode, ClassName, myArr, MaxX)
     
 Exit Sub
 
-
-
 End Sub
+
+Function conv_spec_symbols ( s )
+    With CreateObject("vbscript.regexp")
+        .Global = True
+        .Pattern = "[.(),&+*%!?<>;:\-\/\\\ ]" & Chr(34)
+        conv_spec_symbols = .Replace(s, "")
+    End With
+End Function
