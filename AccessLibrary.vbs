@@ -98,6 +98,7 @@ End Sub
 
 Function conv_spec_symbols ( s )
     'r = Replace(s, Chr(34), "\""")
-    conv_spec_symbols = Replace(s, "'", "`")
+    r = Replace(s, "'", "`")
+    conv_spec_symbols = Replace(r, "'", "`")
 
 End Function
